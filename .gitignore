@@ -9,3 +9,4 @@ grafana-9.5.2/
 .env
 consumer_kafka.py
 data/
+Create_table_buildings_households.py
