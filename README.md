@@ -1,4 +1,4 @@
-# 개인 데이터 엔지니어 파이프라인(data engineer pipeline) 프로젝트
+# 개인 데이터 엔지니어 파이프라인(data engineer pipeline) 학습
 
 ## 프로젝트 내용
 
@@ -57,7 +57,7 @@
 데이터를 생성하고 kafka를 통해 토픽으로 전송
 
 ![image](https://github.com/sy1909/apt_energy_pipeline/assets/31126977/8b072774-3d1d-46ba-81ea-d9aedb4af0e9)
-토픽에서 데이터를 받아와 postgresql에 적재하고 메세에 포함은 안됐지만 이상치 슬랙 알림 실행중
+토픽에서 데이터를 받아와 postgresql에 적재하고 메세지에 포함은 안됐지만 이상치 슬랙 알림 실행중
 
 ![image](https://github.com/sy1909/apt_energy_pipeline/assets/31126977/b1ea300e-91e5-4eda-a367-c685bcbdc458)
 이상치에 따라 알림중
