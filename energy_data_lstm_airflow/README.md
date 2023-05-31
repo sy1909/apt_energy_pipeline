@@ -104,6 +104,9 @@ airflow sceduler , webserver 두개는 같은 python 환경에서 실행되어�
 
 
 
+## airflow 결과
+
+![image](https://github.com/sy1909/apt_energy_pipeline/assets/31126977/01ee9b7b-e2d3-4b7f-af3d-047d53935108)
 
 
 
