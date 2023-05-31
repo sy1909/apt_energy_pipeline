@@ -1,13 +1,16 @@
 # energy-pipeline airflow dag 학습
 
 앞서 undertheC 프로젝트에서 lstm 적용 못했던 것을 적용하기 위해 학습 진행
+
 https://github.com/sy1909/undertheC
 
 
 apt-data-pipeline에도 airflow 적용 가능한지 학습 중
 
 ## 데이터 와 lstm 학습 진행
+
 investing.com 에서 탄소배출권 , natural_gas , newastle_coal , wti 선물 가격 데이터를 바탕으로 lstm모델 학습을 진행한 파일
+
 **lstm_predict.ipynb**
 
 
