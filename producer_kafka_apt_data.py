@@ -44,12 +44,14 @@
 #                 print(f"Produced data: {data}")
 #                 time.sleep(0.1) # 0.1초 딜레이
 
-#----------- v2 
+
+# ----- v3 ----------------- 건물별로 멀티프로세싱 적용
 
 import time
 import json
 import random
 from kafka import KafkaProducer
+from multiprocessing import Process
 
 brokers = ["localhost:9091", "localhost:9092", "localhost:9093"]
 
@@ -78,26 +80,34 @@ def generate_energy(month):
 
     return power, water, heating
 
-if __name__ == "__main__":
+def produce_energy_data(household_id, building_number, building_config):
     producer = KafkaProducer(bootstrap_servers=brokers, value_serializer=lambda x: json.dumps(x).encode('utf-8'))
 
+    for floor in range(1, building_config['floors'] + 1):
+        for unit in range(1, building_config['units_per_floor'] + 1):
+            for year in range(start_year, end_year + 1):
+                for month in range(1, 13):
+                    power, water, heating = generate_energy(month)
+
+                    # 데이터 생성
+                    data = {"household_id": household_id, "building_number": building_number, "floor": floor, "unit": unit, "year": year, "month": month, "power": power,
+                            "water": water, "heating": heating}
+
+                    # 생성한 데이터를 Kafka topic으로 전송 , 
+                    # produced_data 이용 나중에 로그 파일 생성 가능
+                    produced_data = producer.send('energy-data-topic', value=data)
+                    print(f"Produced data: {data}")
+
+if __name__ == "__main__":
+    processes = []
     household_id = 1
     for building_number in range(1901, 1901 + total_buildings):
         building_config = buildings_data.get(building_number, buildings_data['default'])
+        
+        process = Process(target=produce_energy_data, args=(household_id, building_number, building_config))
+        process.start()
+        processes.append(process)
+        household_id += building_config['floors'] * building_config['units_per_floor']
 
-        for floor in range(1, building_config['floors'] + 1):
-            for unit in range(1, building_config['units_per_floor'] + 1):
-                for year in range(start_year, end_year + 1):
-                    for month in range(1, 13):
-                        power, water, heating = generate_energy(month)
-
-                        # 데이터 생성
-                        data = {"household_id": household_id, "building_number": building_number, "floor": floor, "unit": unit, "year": year, "month": month, "power": power,
-                                "water": water, "heating": heating}
-
-                        # 생성한 데이터를 Kafka topic으로 전송
-                        produced_data = producer.send('energy-data-topic', value=data)
-                        print(f"Produced data: {data}")
-                        time.sleep(0.5) # 0.1초 딜레이
-
-                household_id += 1
+    for process in processes:
+        process.join()
