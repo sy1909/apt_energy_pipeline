@@ -35,6 +35,10 @@ Spark SQL을 이용해 데이터를 분석후 전처리, Spark MLlib를 이용�
 
 ## 결과
 
+<img width="560" alt="taxi_pipeline_airflow" src="https://github.com/sy1909/apt_energy_pipeline/assets/31126977/2bf36c07-4bb1-4ef3-99d0-a9bfcdce8a3e">
+DAG 실행 완료
+
+<img width="584" alt="taxi_pipeline_airflow_2" src="https://github.com/sy1909/apt_energy_pipeline/assets/31126977/1c966073-e8a8-4006-b700-a8a2c245c06d">
 
 
 
@@ -69,4 +73,8 @@ payment_producer로부터 받은 데이터를 분석해 비정상 결제 여부�
 
 ## 결과
 
+<img width="1445" alt="결제데이터_발생_처리" src="https://github.com/sy1909/apt_energy_pipeline/assets/31126977/a74ebc89-3a79-47f4-b37c-31ce10474c13">
+
+
+<img width="1144" alt="비정상_결제_슬랙알림" src="https://github.com/sy1909/apt_energy_pipeline/assets/31126977/aa8bdb4c-56e0-42eb-82ca-50616ee044fa">
 
