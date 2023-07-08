@@ -78,7 +78,7 @@ producer 에너지 발생 파일에서 멀티프로세싱을 사용하도록 변
 
 
 ![image](https://github.com/sy1909/apt_energy_pipeline/assets/31126977/7373eb58-0ea3-4521-9cfd-2d476e619fa4)
-디자인 감각은 없어서 우선 생각나는대로 표로 구현
+생각나는대로 표로 구현
 
 
 
